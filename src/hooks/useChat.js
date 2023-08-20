@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import io from 'socket.io-client';
-const SERVER_URL = 'http://localhost:4000'
+const SERVER_URL = 'https://chat-server-h202.onrender.com/'
 
 const useChat = (sharedRoom) => {
     const [messages, setMessages] = useState([]);
