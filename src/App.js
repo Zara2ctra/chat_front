@@ -4,7 +4,7 @@ import ChatPage from './components/ChatPage';
 import {Container} from 'react-bootstrap'
 import {observer} from "mobx-react-lite";
 
-const socket = socketIO.connect('http://localhost:4000');
+const socket = socketIO.connect('https://chat-server-h202.onrender.com:10000');
 
 const App = observer(() => {
     return (
