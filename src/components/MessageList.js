@@ -21,9 +21,8 @@ export const MessageList = observer(({messages}) => {
             const parsedTags = messageTags
                 .replace("[", "")
                 .replace("]", "")
-                .split(", ")
+                .split(" ")
                 .filter(tag => tag !== '');
-            console.log(messageTags)
             return parsedTags.some((tag) => currentTags.includes(tag));
         } else {
             return true;
