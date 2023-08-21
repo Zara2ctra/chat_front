@@ -1,11 +1,12 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Form, Button} from "react-bootstrap"
+import React, {useContext, useState} from 'react';
+import {Button, Form, OverlayTrigger, Tooltip} from "react-bootstrap"
 import {RiSendPlaneFill} from 'react-icons/ri'
 import {Context} from "../index";
 
 export const ChatFooter = ({sendMessage}) => {
     const {user} = useContext(Context)
     const [text, setText] = useState('');
+    const [showTooltip, setShowTooltip] = useState(false)
 
     const handleChangeText = (e) => {
         setText(e.target.value)
@@ -13,6 +14,7 @@ export const ChatFooter = ({sendMessage}) => {
 
     const handleSendMessage = (e) => {
         e.preventDefault()
+        setShowTooltip(false);
         const tags = [];
         let messageText = "";
         const words = e.target[0].value.split(" ");
@@ -41,12 +43,24 @@ export const ChatFooter = ({sendMessage}) => {
         <>
             <Form onSubmit={handleSendMessage}>
                 <Form.Group className='d-flex'>
-                    <Form.Control
-                        value={text}
-                        onChange={handleChangeText}
-                        type='text'
-                        placeholder='Message...'
-                    />
+                    <OverlayTrigger
+                        show={showTooltip}
+                        placement="bottom"
+                        overlay={
+                        <Tooltip>
+                            {`Format:
+                              #yourtag Message
+                              #yourtag#nextTeg Message`}
+                        </Tooltip>}
+                    >
+                        <Form.Control
+                            value={text}
+                            onChange={handleChangeText}
+                            onClick={() => setShowTooltip(!showTooltip)}
+                            type='text'
+                            placeholder='Message...'
+                        />
+                    </OverlayTrigger>
                     <Button variant='success' type='submit'>
                         <RiSendPlaneFill/>
                     </Button>

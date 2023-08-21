@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import {Accordion, Card, ListGroup} from 'react-bootstrap'
 import {Trash} from "react-bootstrap-icons";
 import {Context} from "../index";

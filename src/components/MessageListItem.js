@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React from "react"
 import {Card, ListGroup} from "react-bootstrap"
 
 export const MessageListItem = (({msg}) => {
