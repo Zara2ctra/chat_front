@@ -22,9 +22,13 @@ export const MessageListItem = (({msg}) => {
                 text="black"
                 style={{width: "80%"}}
             >
-                <Card.Header className='d-flex justify-content-between align-items-center'>
-                    <Card.Text>{textTagList}</Card.Text>
+                {textTagList ?
+                    <Card.Header className='d-flex justify-content-between align-items-center'>
+                    <Card.Text className={'fw-bold'}>{textTagList}</Card.Text>
                 </Card.Header>
+                :
+                <></>
+                }
                 <Card.Body className='d-flex justify-content-between align-items-center'>
                     <Card.Text>{messageText}</Card.Text>
                 </Card.Body>

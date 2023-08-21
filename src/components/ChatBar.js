@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Accordion, Card, ListGroup} from 'react-bootstrap'
+import {Accordion, Button, Card, ListGroup} from 'react-bootstrap'
 import {Trash} from "react-bootstrap-icons";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
@@ -17,17 +17,21 @@ const ChatBar = observer(() => {
         <Accordion className='mt-4'>
             <ListGroup variant="flush">
                 {user.tagList.map((tag) => (
-                        <Card key={tag}>
-                            <ListGroup.Item>{tag}</ListGroup.Item>
-                            <button onClick={() => handleRemoveTag(tag)} className='custom-table__action-btn'>
+                        <Card key={tag} className='d-flex flex-row justify-content-sm-between'>
+                            <ListGroup.Item style={{border: 0, margin: "5px"}}>{tag}</ListGroup.Item>
+                            <Button
+                                style={{borderRadius: "0 0.375rem 0.375rem 0"}}
+                                onClick={() => handleRemoveTag(tag)}
+                                className='custom-table__action-btn border'
+                                variant="dark">
                                 <Trash/>
-                            </button>
+                            </Button>
                         </Card>
                     )
                 )
                 }
             </ListGroup>
-            <TagInput />
+            <TagInput/>
         </Accordion>
     );
 });
