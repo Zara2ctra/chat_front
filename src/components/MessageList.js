@@ -13,11 +13,9 @@ const listStyles = {
 
 export const MessageList = observer(({messages}) => {
     const {user} = useContext(Context);
-    console.log(messages);
     const currentTags = user.tagList;
 
     const currentMessages = messages.filter((messageObj) => {
-        console.log(messageObj.tagList);
         const messageTags = messageObj.tagList;
         if (messageTags) {
             const parsedTags = messageTags
@@ -25,7 +23,7 @@ export const MessageList = observer(({messages}) => {
                 .replace("]", "")
                 .split(", ")
                 .filter(tag => tag !== '');
-
+            console.log(messageTags)
             return parsedTags.some((tag) => currentTags.includes(tag));
         } else {
             return true;

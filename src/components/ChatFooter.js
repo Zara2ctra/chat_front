@@ -14,7 +14,6 @@ export const ChatFooter = ({sendMessage}) => {
 
     const handleSendMessage = (e) => {
         e.preventDefault()
-        setShowTooltip(false);
         const tags = [];
         let messageText = "";
         const words = e.target[0].value.split(" ");
